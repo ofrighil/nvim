@@ -18,11 +18,11 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 vim.opt.scrolloff = 8
 
 vim.opt.termguicolors = true
 
 vim.opt.updatetime = 50
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 500
