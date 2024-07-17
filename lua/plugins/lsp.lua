@@ -2,6 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"MysticalDevil/inlay-hints.nvim",
 		{ "j-hui/fidget.nvim", opts = {} },
 		{ "folke/neodev.nvim", opts = {} },
 	},
@@ -14,7 +15,6 @@ return {
 				local opts = { buffer = event.buf }
 				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 
-				-- Press <C-t> to jump back
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
@@ -26,12 +26,29 @@ return {
 				end, opts)
 				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 				vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+				if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+					vim.keymap.set("n", "<leader>th", function()
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+					end, opts)
+				end
 			end,
 		})
 
 		local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-		lsp.lua_ls.setup({ capabilities = capabilities })
+		lsp.lua_ls.setup({
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					hint = {
+						enable = true,
+					},
+				},
+			},
+		})
 
 		lsp.cmake.setup({ capabilities = capabilities })
 		lsp.clangd.setup({ capabilities = capabilities })
@@ -41,6 +58,14 @@ return {
 		lsp.ocamllsp.setup({ capabilities = capabilities })
 
 		lsp.pylsp.setup({ capabilities = capabilities })
+		lsp.pylyzer.setup({
+			capabalities = capabilities,
+			settings = {
+				python = {
+					inlayHints = true,
+				},
+			},
+		})
 
 		lsp.rust_analyzer.setup({ capabilities = capabilities })
 	end,

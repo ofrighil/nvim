@@ -20,6 +20,9 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.inccommand = "split"
 
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 vim.opt.scrolloff = 8
 
 vim.opt.termguicolors = true
