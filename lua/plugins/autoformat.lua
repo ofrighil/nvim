@@ -8,7 +8,7 @@ return {
 				lua = { "stylua" },
 				nix = { "nixfmt" },
 				ocaml = { "ocamlformat" },
-				python = { "isort", "ruff_format" },
+				python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 				rust = { "rustfmt" },
 			},
 		})

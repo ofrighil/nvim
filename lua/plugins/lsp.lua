@@ -58,14 +58,6 @@ return {
 		lsp.ocamllsp.setup({ capabilities = capabilities })
 
 		lsp.pylsp.setup({ capabilities = capabilities })
-		lsp.pylyzer.setup({
-			capabalities = capabilities,
-			settings = {
-				python = {
-					inlayHints = true,
-				},
-			},
-		})
 
 		lsp.rust_analyzer.setup({ capabilities = capabilities })
 	end,
