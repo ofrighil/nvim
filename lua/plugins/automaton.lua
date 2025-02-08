@@ -1,6 +1,6 @@
 return {
-    "eandrju/cellular-automaton.nvim",
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-    },
+  "eandrju/cellular-automaton.nvim",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+  },
 }
