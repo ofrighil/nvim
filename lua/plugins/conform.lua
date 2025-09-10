@@ -6,6 +6,7 @@ return {
       lua = { "stylua" },
       nix = { "nixfmt" },
       python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+      rust = { "rustfmt" },
     },
   },
   config = function(_, opts)
