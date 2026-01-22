@@ -14,13 +14,16 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
--- experiment with these
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
+vim.opt.scrolloff = 8
+
 vim.opt.inccommand = "split"
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- experiment with these
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 

@@ -1,11 +1,24 @@
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("nil_ls")
-vim.lsp.enable("ocamllsp")
-vim.lsp.enable("rust_analyzer")
-vim.lsp.enable("ty")
+vim.lsp.set_log_level("WARN")
+
+local servers = {
+  lua_ls = "lua-language-server",
+  nil_ls = "nil",
+  ocamllsp = "ocamllsp",
+  ty = "ty",
+  rust_analyzer = "rust-analyzer"
+}
+
+for name, cmd in pairs(servers) do
+  if vim.fn.executable(cmd) == 1 then
+    vim.lsp.enable(name)
+  end
+end
+
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
+    vim.diagnostic.config({virtual_lines = {current_line = true}, }) -- { virtual_text = false, virtual_lines = { current_line = true }, })
+
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition)
