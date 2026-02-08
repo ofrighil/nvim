@@ -2,6 +2,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 
+vim.opt.clipboard:append("unnamedplus")
+
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
