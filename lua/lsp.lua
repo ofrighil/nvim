@@ -1,4 +1,4 @@
-vim.lsp.set_log_level(vim.log.levels.OFF)
+vim.lsp.log.set_level(vim.log.levels.OFF)
 
 local servers = {
   lua_ls = "lua-language-server",
