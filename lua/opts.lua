@@ -14,7 +14,7 @@ vim.opt.backup = false
 vim.opt.undofile = true
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
-vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.completeopt = "menu,menuone,noselect,nearest"
 
 vim.opt.scrolloff = 8
 
@@ -22,6 +22,8 @@ vim.opt.inccommand = "split"
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+vim.opt.autocomplete = true
 
 -- experiment with these
 vim.opt.hlsearch = true

@@ -16,20 +16,6 @@ end
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
-    vim.diagnostic.config({
-      virtual_text = { spacing = 2, prefix = "●" },
-      severity_sort = true,
-      float = { border = "rounded", source = "if_many" },
-      signs = true,
-      underline = true,
-      update_in_insert = false,
-    })
-    vim.api.nvim_create_autocmd("CursorHold", {
-      callback = function()
-        vim.diagnostic.open_float(nil, { focusable = false, border = "rounded" })
-      end,
-    })
-
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     ---@cast client -nil
 
@@ -39,20 +25,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
     vim.keymap.set("n", "gT", vim.lsp.buf.type_definition)
 
-    vim.keymap.set("n", "K", vim.lsp.buf.hover)
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help)
-
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
     vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename)
 
-    vim.keymap.set("n", "<leader>[d", function()
-      vim.diagnostic.jump({ count = -1, float = true })
-    end)
-    vim.keymap.set("n", "<leader>]d", function()
-      vim.diagnostic.jump({ count = 1, float = true })
-    end)
-    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
-    vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover)
+    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help)
 
     vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
     vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
