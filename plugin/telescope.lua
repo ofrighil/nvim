@@ -1,5 +1,14 @@
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(ev)
+    if ev.data.spec.name == "telescope-fzf-native.nvim" and ev.data.kind ~= "delete" then
+      vim.system({ "make" }, { cwd = ev.data.path }):wait()
+    end
+  end,
+})
+
 vim.pack.add({
   "https://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
 })
 vim.pack.add({ "https://github.com/nvim-telescope/telescope.nvim" })
 
@@ -11,6 +20,8 @@ require("telescope").setup({
   },
   extensions = { fzf = {} },
 })
+
+require("telescope").load_extension("fzf")
 
 local builtin = require("telescope.builtin")
 

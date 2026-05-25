@@ -1,12 +1,11 @@
 vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
 
-
 local mini_icons = require("mini.icons")
-mini_icons.setup()
+mini_icons.setup({})
 mini_icons.mock_nvim_web_devicons()
 
 local mini_misc = require("mini.misc")
-mini_misc.setup()
+mini_misc.setup({})
 mini_misc.setup_restore_cursor()
 mini_misc.setup_auto_root()
 
@@ -33,4 +32,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
     vim.bo[args.buf].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
   end,
+})
+
+require("mini.ai").setup({
+  custom_textobjects = {
+    F = require("mini.ai").gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
+  },
 })
