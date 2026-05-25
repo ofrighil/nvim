@@ -26,7 +26,5 @@ vim.opt.splitbelow = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
-vim.opt.termguicolors = true
-
 vim.opt.updatetime = 50
 vim.opt.timeoutlen = 500
