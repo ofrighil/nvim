@@ -5,6 +5,7 @@ local conform = require("conform")
 conform.setup({
   notify_on_error = true,
   formatters_by_ft = {
+    javascript = { "prettier" },
     lua = { "stylua" },
     nix = { "nixfmt" },
     python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },

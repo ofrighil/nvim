@@ -4,6 +4,7 @@ local servers = {
   lua_ls = "lua-language-server",
   nil_ls = "nil",
   ocamllsp = "ocamllsp",
+  ts_ls = "typescript-language-server",
   ty = "ty",
   rust_analyzer = "rust-analyzer",
 }
