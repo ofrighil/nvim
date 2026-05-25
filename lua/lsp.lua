@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     ---@cast client -nil
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition)
-    vim.keymap.set("n", "gi", vim.lsp.buf.declaration)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
     vim.keymap.set("n", "gr", vim.lsp.buf.references)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
     vim.keymap.set("n", "gT", vim.lsp.buf.type_definition)
@@ -30,7 +30,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename)
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover)
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help)
 
     vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
     vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
@@ -38,7 +37,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end)
 
-    vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+    vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help)
 
     if client:supports_method("inlayHintProvider") then
       vim.keymap.set("n", "gih", function()
