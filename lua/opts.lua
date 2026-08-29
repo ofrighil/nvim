@@ -5,7 +5,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.expandtab = true
-vim.opt.smartindent = true
 
 vim.opt.wrap = false
 

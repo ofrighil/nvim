@@ -1,4 +1,5 @@
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+  group = vim.api.nvim_create_augroup("user-lean", { clear = true }),
   pattern = "*.lean",
   once = true,
   callback = function()

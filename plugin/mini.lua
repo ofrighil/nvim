@@ -24,13 +24,15 @@ require("mini.completion").setup({
   },
 })
 
+local group = vim.api.nvim_create_augroup("user-mini-completion", { clear = true })
+
 vim.api.nvim_create_autocmd("LspAttach", {
+  group = group,
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client then
-      client.server_capabilities.completionProvider = client.server_capabilities.completionProvider or {}
+    if client and client:supports_method("textDocument/completion") then
+      vim.bo[args.buf].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
     end
-    vim.bo[args.buf].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
   end,
 })
 

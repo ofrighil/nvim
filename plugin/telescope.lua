@@ -1,4 +1,7 @@
+local group = vim.api.nvim_create_augroup("user-telescope", { clear = true })
+
 vim.api.nvim_create_autocmd("PackChanged", {
+  group = group,
   callback = function(ev)
     if ev.data.spec.name == "telescope-fzf-native.nvim" and ev.data.kind ~= "delete" then
       vim.system({ "make" }, { cwd = ev.data.path }):wait()
@@ -44,6 +47,7 @@ vim.keymap.set("n", "<leader>en", function()
 end)
 
 vim.api.nvim_create_autocmd("User", {
+  group = group,
   pattern = "TelescopePreviewerLoaded",
   callback = function(args)
     vim.wo.wrap = true
