@@ -26,7 +26,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = args.buf })
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = args.buf })
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = args.buf })
     vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = args.buf })
 

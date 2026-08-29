@@ -8,6 +8,7 @@ conform.setup({
     javascript = { "prettier" },
     lua = { "stylua" },
     nix = { "nixfmt" },
+    ocaml = { "ocamlformat" },
     python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
     rust = { "rustfmt" },
   },
