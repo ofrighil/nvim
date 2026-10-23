@@ -10,8 +10,6 @@ require("cloak").setup({
   cloak_length = nil, -- Provide a number if you want to hide the true length of the value.
   -- Whether it should try every pattern to find the best fit or stop after the first.
   try_all_patterns = true,
-  -- Set to true to cloak Telescope preview buffers. (Required feature not in 0.1.x)
-  cloak_telescope = true,
   -- Re-enable cloak when a matched buffer leaves the window.
   cloak_on_leave = false,
   patterns = {
