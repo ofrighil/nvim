@@ -13,6 +13,11 @@ conform.setup({
     qml = { "qmlformat" },
     rust = { "rustfmt" },
   },
+  format_on_save = function(bufnr)
+    if vim.bo[bufnr].filetype == "uiua" then
+      return { lsp_format = "prefer" }
+    end
+  end,
 })
 
 vim.keymap.set("n", "<leader>fc", function()

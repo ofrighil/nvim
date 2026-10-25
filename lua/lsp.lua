@@ -1,3 +1,5 @@
+vim.filetype.add({ extension = { ua = "uiua" } })
+
 vim.lsp.log.set_level(vim.log.levels.OFF)
 
 local servers = {
@@ -8,6 +10,7 @@ local servers = {
   ts_ls = "typescript-language-server",
   ty = "ty",
   rust_analyzer = "rust-analyzer",
+  uiua = "uiua",
 }
 
 for name, cmd in pairs(servers) do
