@@ -3,6 +3,7 @@ vim.filetype.add({ extension = { ua = "uiua" } })
 vim.lsp.log.set_level(vim.log.levels.OFF)
 
 local servers = {
+  dafny = "dafny",
   hls = "haskell-language-server",
   lua_ls = "lua-language-server",
   nil_ls = "nil",
